@@ -1,7 +1,7 @@
 # Astro zsh theme
 Astro theme is based on [`ys`](http://blog.ysmood.org/my-ys-terminal-theme/) theme and `robbyrushell` (default theme) theme. 
 
-    -- Add user info
+    - Add user info
 
 ## Screenshots
 ![demo](./astro.png)
