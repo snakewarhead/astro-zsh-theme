@@ -1,3 +1,12 @@
+# User info
+if [[ $UID -eq 0 ]]; then
+    local user_host='%{$terminfo[bold]$fg[red]%}%n@%m %{$reset_color%}'
+    local user_symbol='#'
+else
+    local user_host='%{$terminfo[bold]$fg[green]%}%n@%m %{$reset_color%}'
+    local user_symbol='$'
+fi
+
 # Directory info.
 local current_dir='${PWD/#$HOME/~} '
 
@@ -23,11 +32,11 @@ ZSH_THEME_GIT_PROMPT_DIRTY="$YS_VCS_PROMPT_DIRTY"
 ZSH_THEME_GIT_PROMPT_CLEAN="$YS_VCS_PROMPT_CLEAN"
 
 
-# Prompt format: \n # DIRECTORY [GIT_BRANCH STATE GIT_SHA] [TIME] \n ➜
+# Prompt format: \n # DIRECTORY [GIT_BRANCH STATE GIT_SHA] \n ➜
 PROMPT="
-%{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
+%{$terminfo[bold]$fg[blue]%}${user_symbol}%{$reset_color%} \
+${user_host}\
 %{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
 ${git_info}\
-${git_sha}\
-%{$fg[white]%}[%*]
+${git_sha}
 %${ret_status}%{$reset_color%}"
